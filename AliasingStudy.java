@@ -70,7 +70,7 @@ public class AliasingStudy {
 		double[] arrivalTimes = RedNoiseGenerator.generateArrivalTimes(mean, duration, alpha, nTimeBins[0], engine);
 		//double[] arrivalTimes = RedNoiseGenerator.generateModulatedArrivalTimes(mean, duration, alpha, period, 0.1);
 
-		sum[j] = PeriodogramMaker.makeFFTPeriodogram(TimeSeriesMaker.makeTimeSeries(arrivalTimes, binTimes[j]));
+		sum[j] = PeriodogramMaker.makePlainRateFFTPeriodogram(TimeSeriesMaker.makeTimeSeries(arrivalTimes, binTimes[j]));
 		//avg[j] = PeriodogramMaker.makeFFTPeriodogram(TimeSeriesUtils.kalmanFilter(TimeSeriesMaker.makeTimeSeries(arrivalTimes, 10d)));
 	    }
 	    k++;
@@ -85,7 +85,7 @@ public class AliasingStudy {
 		    double[] arrivalTimes = RedNoiseGenerator.generateArrivalTimes(mean, duration, alpha, nTimeBins[0], engine);
 		    //arrivalTimes = RedNoiseGenerator.generateModulatedArrivalTimes(mean, duration, alpha, period, 0.1);
 
-		    psd[j] = PeriodogramMaker.makeFFTPeriodogram(TimeSeriesMaker.makeTimeSeries(arrivalTimes, binTimes[j]));
+		    psd[j] = PeriodogramMaker.makePlainRateFFTPeriodogram(TimeSeriesMaker.makeTimeSeries(arrivalTimes, binTimes[j]));
 		    //psd[j] = PeriodogramMaker.makeFFTPeriodogram(TimeSeriesUtils.kalmanFilter(TimeSeriesMaker.makeTimeSeries(arrivalTimes, 10d)));
 
 		    sum[j] = (FFTPeriodogram) sum[j].add(psd[j]);
